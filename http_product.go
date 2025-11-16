@@ -16,7 +16,7 @@ type ListProductsResult struct {
 }
 
 func (c *HTTPClient) ListProducts(ctx context.Context, params *ListProductsParams) ([]Product, error) {
-	var queryParams map[string]string
+	queryParams := map[string]string{}
 	if params != nil {
 		if len(params.Ticker) > 0 {
 			queryParams["ticker"] = params.Ticker
