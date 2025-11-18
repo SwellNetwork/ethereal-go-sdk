@@ -34,6 +34,23 @@ func (ts *HTTPClientIntegrationTestSuite) TestListProducts() {
 	ts.NotNil(result)
 }
 
+func (ts *HTTPClientIntegrationTestSuite) TestListMarketPrices() {
+	ctx := context.Background()
+	params := &ListMarketPricesParams{
+		ProductIDs: []string{
+			"bc7d5575-3711-4532-a000-312bfacfb767",
+			"480014cc-536e-4fd4-958b-b2afcf8ce09f",
+		},
+	}
+
+	result, err := ts.client.ListMarketPrices(ctx, params)
+
+	ts.T().Log("list market prices", result)
+
+	ts.NoError(err)
+	ts.NotNil(result)
+}
+
 func (ts *HTTPClientIntegrationTestSuite) TestGetProjectedFunding() {
 	ctx := context.Background()
 
